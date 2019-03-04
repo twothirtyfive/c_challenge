@@ -1,18 +1,16 @@
 pragma solidity >=0.4.22 <0.6.0;
 
-// contract address: 0xb2d609f430866f32fde1979c79d1b9bda5d3a2a5
-
 contract Registration {
-
+    
     struct record {
         string id;
         bool taken;
     }
-
+    
     mapping(address => string) users;
     mapping(uint16 => record) records;
     uint16 counter = 16;
-
+    
     constructor () public {
         records[0].id = "0000";
         records[1].id = "0001";
@@ -31,26 +29,26 @@ contract Registration {
         records[14].id = "1110";
         records[15].id = "1111";
     }
-
+    
     function generate(address addr) public{
-        require (counter != 0);
-        require (bytes(users[addr]).length == 0);
+        assert (counter != 0);
+        assert (bytes(users[addr]).length == 0);
 
         uint16 rand = (uint16 (uint(blockhash(block.number-1))%16));
         while(records[rand].taken) {
-            rand = (uint16(uint(blockhash(block.number-1)))%16);
+            if(rand == 15) { rand = 0; } else { rand += 1; }
         }
-
+        
         records[rand].taken = true;
         users[addr] = records[rand].id;
-
+        
         counter -= 1;
     }
-
+    
     function get_user(address addr) view public returns (string memory) {
         return users[addr];
     }
-
+    
     function get_info() view public returns (uint16, uint16) {
         return (16 - counter, counter);
     }
