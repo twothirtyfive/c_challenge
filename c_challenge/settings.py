@@ -1,3 +1,3 @@
-contract_address     = '0xb2d609f430866f32fde1979c79d1b9bda5d3a2a5'
+contract_address     = '0x84043cd5f0df82b5d10f1b471affc98e0fd214ce'
 wallet_private_key   = 'AF4B37806BA084897697BAF63C961D004956E0C4E189B6C0BAA39867D129D13B'
-wallet_address       = '0x814b94Ca1Fc9fED4E18aF6974AF1b5053E4FA57e'
+wallet_address       = '0x814b94Ca1Fc9fED4E18aF6974AF1b5053Eç4FA57e'

@@ -1,6 +1,7 @@
 from flask import Flask
 import contract_abi, time
 from web3 import Web3, HTTPProvider
+from json import dumps
 from settings import *
 
 app = Flask(__name__)
@@ -34,7 +35,10 @@ def register(addr):
     if tx_receipt is None:
         return {'status': 'failed', 'error': 'timeout'}
 
-    return('transaction success')
+    with open('log.txt', 'a+') as fp:
+        fp.write(str(tx_receipt))
+
+    return({'status': 'success', 'message': 'see logfile for details'})
 
 
 @app.route('/get_id/<string:addr>', methods=['GET'])

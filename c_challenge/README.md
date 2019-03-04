@@ -15,3 +15,9 @@ To run up the server (highly recommended to use a virtual environment):
 
 
 Then use the (default) address `127.0.0.1:5000` to send requests and receive responses.
+
+[POST] /register/<string: addr> --> register new address
+
+[GET] /get_id/<string: addr> --> get ID for given address
+
+[GET] /info --> get the number of IDs taken and remaining
